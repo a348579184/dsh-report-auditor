@@ -1,0 +1,38 @@
+{
+  "name": "dsh-report-auditor",
+  "version": "0.1.0",
+  "description": "数字校对台：在 DeepSeek Harness 中按 CSV 源数据校对周报数字，查看证据并选择修订。",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a348579184/dsh-report-auditor.git"
+  },
+  "type": "module",
+  "keywords": ["dsh-plugin", "deepseek-harness", "report-audit"],
+  "exports": {
+    ".": "./host.mjs",
+    "./client": "./client.js",
+    "./icon": "./icon.svg",
+    "./locale/*.json": "./locale-*.json"
+  },
+  "files": [
+    "host.mjs", "engine.mjs", "workbench.html", "workbench.mjs", "workbench.css",
+    "client.js", "client-source.js", "build.mjs", "locale-*.json", "icon.svg", "cordis.patch.yml",
+    "sample*.csv", "sample*.md", "workbench-preview.png", "engine.test.mjs"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test"
+  },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  }
+}
