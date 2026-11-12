@@ -17,7 +17,7 @@
   "files": [
     "host.mjs", "engine.mjs", "workbench.html", "workbench.mjs", "workbench.css",
     "client.js", "client-source.js", "build.mjs", "locale-*.json", "icon.svg", "cordis.patch.yml",
-    "sample*.csv", "sample*.md", "workbench-preview.png", "engine.test.mjs"
+    "sample*.csv", "sample*.md", "workbench-preview.svg", "engine.test.mjs"
   ],
   "scripts": {
     "build": "node build.mjs",
