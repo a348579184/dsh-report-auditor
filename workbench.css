@@ -1,0 +1,124 @@
+:root {
+  --paper:#f7f8f4; --surface:#fff; --ink:#172e29; --muted:#53645e; --line:#d7dfd8;
+  --green:#174f40; --green-soft:#ebf2ea; --amber:#8a4e14; --amber-soft:#faedcf;
+  --ok:#20624a; --ok-soft:#e6f1e7; --review:#55597d; --review-soft:#ececf4;
+  color:var(--ink); background:var(--paper);
+  font:15px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*, *::before, *::after {box-sizing:border-box}
+body {margin:0; min-width:0}
+button,input,textarea {font:inherit}
+[hidden] {display:none!important}
+button {cursor:pointer; color:inherit}
+button:disabled {cursor:not-allowed; opacity:.48}
+button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible,textarea:focus-visible {outline:3px solid #769c48; outline-offset:3px}
+h1,h2,h3,p,pre {margin:0}
+h1 {font-size:clamp(28px,4.7vw,52px); letter-spacing:-.06em; line-height:1.13; font-weight:730; margin:8px 0 12px}
+h2 {font-size:20px; line-height:1.45; letter-spacing:-.035em}
+h3 {font-size:16px; line-height:1.5}
+.muted,.helper,.source-meta,.file-label {color:var(--muted)}
+.helper,.source-meta {font-size:13px}
+.mast {background:#fff; border-bottom:1px solid var(--line)}
+.mast-inner,.app {max-width:1200px; margin:auto; padding-inline:clamp(16px,4vw,54px)}
+.mast-inner {min-height:58px; display:flex; align-items:center; justify-content:space-between; gap:12px}
+.brand {display:flex; align-items:center; gap:10px; font-size:17px; font-weight:750; letter-spacing:-.03em}
+.brand-icon {width:29px; height:29px; display:flex; align-items:flex-end; padding:6px; gap:2px; border-radius:7px; background:var(--green)}
+.brand-icon i {display:block; flex:1; background:#e1efab; border-radius:1px}
+.brand-icon i:nth-child(1) {height:6px}.brand-icon i:nth-child(2) {height:11px}.brand-icon i:nth-child(3) {height:17px}
+.app {padding-bottom:48px}
+.overview {display:flex; align-items:center; justify-content:space-between; gap:24px; padding-block:clamp(24px,4vw,50px) clamp(21px,3.3vw,34px)}
+.file-label {display:flex; align-items:center; gap:7px; font:600 12px/1.45 "IBM Plex Mono",ui-monospace,"PingFang SC",monospace; letter-spacing:.015em}
+.file-dot {width:7px; height:7px; background:#5a825e; border-radius:50%}
+.btn {border:1px solid #bdcabe; background:#fff; border-radius:7px; padding:8px 13px; font-size:13px; font-weight:650; line-height:1.4; white-space:nowrap}
+.btn:hover:not(:disabled) {background:var(--green-soft); border-color:#769681}
+.btn.primary {background:var(--green); color:#fff; border-color:var(--green); padding:10px 16px}
+.btn.primary:hover:not(:disabled) {background:#23654f; border-color:#23654f}
+.btn span {margin-left:6px}
+.btn.quiet {background:transparent; padding:6px 10px}
+.btn.small {padding:5px 10px; font-size:12px}
+.tabbar {display:flex; border-bottom:1px solid #cdd7cc; gap:clamp(12px,3vw,30px); margin-bottom:22px}
+.tab {display:flex; align-items:center; justify-content:center; gap:6px; background:none; border:none; border-bottom:3px solid transparent; color:var(--muted); padding:9px 2px 12px; font-size:14px; font-weight:650; white-space:nowrap}
+.tab.active {border-bottom-color:var(--green); color:var(--green)}
+.tab:hover {color:var(--green)}
+.tab-count,.preview-flag {font-size:11px; border-radius:5px; background:var(--green-soft); padding:1px 6px; font-family:ui-monospace,monospace;color:var(--green)}
+.notice {border-left:3px solid var(--green); padding:9px 12px; margin:0 0 16px; background:#edf3e8; font-size:13px; overflow-wrap:anywhere}
+.notice[data-kind=error] {background:var(--amber-soft); border-left-color:var(--amber)}
+.stat-grid {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:16px}
+.stat {position:relative; display:flex; justify-content:space-between; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px 17px; min-height:69px}
+.stat-value {font:600 clamp(23px,3vw,32px)/1.1 "IBM Plex Mono",ui-monospace,monospace; letter-spacing:-.07em; color:var(--ink)}
+.stat-title {display:flex; align-items:center; gap:7px; font-size:13px; font-weight:650}
+.status-dot {display:inline-block; width:8px; height:8px; flex:none; border-radius:50%; background:var(--muted)}
+.status-dot.issue {background:#b56e20}.status-dot.ok {background:#418561}.status-dot.review {background:#737899}
+.result-grid {display:grid; grid-template-columns:minmax(235px,.86fr) minmax(0,1.54fr); gap:16px; align-items:start}
+.panel,.source-card,.preview-card,.mapping,.empty-state {background:var(--surface); border:1px solid var(--line); border-radius:11px; overflow:hidden; min-width:0}
+.panel-title,.card-head {display:flex; align-items:center; justify-content:space-between; gap:8px}
+.panel-title {padding:15px 16px; border-bottom:1px solid var(--line)}
+.list-count,.line-ref {font:12px/1.45 "IBM Plex Mono",ui-monospace,"PingFang SC",monospace; color:var(--muted)}
+.finding-list {display:flex; flex-direction:column; padding:4px}
+.finding {display:block; width:100%; background:transparent; border:1px solid transparent; border-radius:7px; text-align:left; margin:2px 0; padding:12px; color:var(--ink)}
+.finding:hover {background:#f3f5f1}
+.finding.selected {background:#eff4ec; border-color:#c8d6c6}
+.finding-meta,.detail-meta {display:flex; align-items:center; justify-content:space-between; gap:10px}
+.finding-text {display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:anywhere; font-size:14px; margin-top:8px; font-weight:530}
+.badge {display:inline-flex; align-items:center; gap:5px; font-size:11px; line-height:1.45; font-weight:670; padding:3px 7px; border-radius:5px; width:max-content}
+.badge.issue {color:var(--amber); background:var(--amber-soft)}
+.badge.ok,.badge.accepted {color:var(--ok); background:var(--ok-soft)}
+.badge.review,.badge.kept {color:var(--review); background:var(--review-soft)}
+.detail {padding:clamp(16px,2.6vw,30px)}
+.detail h2 {font-size:22px;margin:14px 0 9px}
+.quote {border-left:3px solid #8aad84; background:#f3f6f0; padding:12px 15px; margin:0 0 20px; font:550 clamp(16px,2.2vw,20px)/1.65 "Baskervville","Songti SC","Noto Serif CJK SC",serif; overflow-wrap:anywhere; white-space:pre-wrap}
+.fact-block {margin:14px 0; overflow-wrap:anywhere}
+.fact-block h3,.choice-title {font-size:12px; color:var(--muted); margin:0 0 5px}
+.evidence {white-space:pre-wrap; font-size:14px}
+.formula {font:500 14px/1.55 "IBM Plex Mono",ui-monospace,"PingFang SC",monospace; white-space:pre-wrap; color:#214b3f}
+.choices {border:none; border-top:1px solid var(--line); margin:17px 0 0; padding:14px 0 0; min-width:0}
+.choice {display:flex; align-items:flex-start; gap:9px; border:1px solid var(--line); border-radius:6px; padding:8px 10px; margin:5px 0; cursor:pointer; overflow-wrap:anywhere; font-size:14px}
+.choice:has(input:checked) {background:var(--green-soft);border-color:#7e9e85}
+.choice input {accent-color:var(--green); margin:5px 0 0}
+.detail-actions,.dialog-actions {display:flex; gap:8px; flex-wrap:wrap; margin-top:15px}
+.decision {color:var(--green); font-size:13px; margin-top:14px}
+.empty-state {padding:25px; min-width:0}
+.empty-state p {margin:5px 0 15px;color:var(--muted)}
+.source-grid,.preview-grid {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px}
+.source-card,.preview-card {padding:18px}
+.card-heading {display:flex; align-items:center; gap:9px; font-size:16px; font-weight:680}
+.step-num {font:600 11px/1.4 ui-monospace,monospace; color:#536b52; background:#edf2e9; padding:3px 5px; border-radius:4px}
+.source-card .helper {margin:7px 0 12px}
+textarea,.mapping input {border:1px solid var(--line);border-radius:6px; color:var(--ink); background:#fcfdfa}
+textarea {display:block; width:100%; resize:vertical; min-height:190px; padding:12px; line-height:1.75; font-size:14px}
+.code-input {font:13px/1.85 "IBM Plex Mono",ui-monospace,"PingFang SC",monospace}
+.source-meta {display:flex; justify-content:space-between; gap:8px; margin-top:7px; overflow-wrap:anywhere; font-size:11px}
+.mapping {padding:12px 17px; margin-top:14px}
+summary {font-size:14px; cursor:pointer; font-weight:620; width:fit-content}
+.mapping .helper {margin-block:8px}
+.mapping-fields {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px; margin-bottom:10px}
+.mapping-fields label {font-size:12px; color:var(--muted)}
+.mapping input {display:block;width:100%;margin-top:3px; padding:6px 8px;font-size:13px}
+.actions-end {display:flex;justify-content:flex-end;margin-top:16px}
+.preview-toolbar {display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.preview-card .card-head {border-bottom:1px solid var(--line); margin-bottom:14px; padding-bottom:10px}
+.preview-card pre {font:14px/1.85 "IBM Plex Mono",ui-monospace,"PingFang SC",monospace; white-space:pre-wrap; overflow-wrap:anywhere; min-height:90px}
+.revised {border-top:3px solid #6b9271; padding-top:16px}
+mark {background:#e3efbe;color:var(--ink);padding:0 2px}
+dialog {border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:22px;max-width:min(360px,92vw)}
+dialog::backdrop {background:#15291f55}
+dialog p {margin-top:6px;font-size:14px;color:var(--muted)}
+.dialog-actions {justify-content:flex-end}
+@media(max-width:760px){
+  .result-grid {grid-template-columns:minmax(190px,.8fr) minmax(0,1.2fr);gap:10px}
+  .app,.mast-inner {padding-inline:16px}.stat {padding:12px}.detail {padding:15px}
+}
+@media(max-width:600px){
+  .overview {align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .result-grid,.source-grid,.preview-grid {grid-template-columns:minmax(0,1fr)}
+  .mapping-fields {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat-grid {gap:6px}.stat {align-items:flex-start;flex-direction:column;gap:6px;min-height:auto;padding:9px}
+  .stat-title {font-size:12px;gap:4px}.status-dot {width:6px;height:6px}
+  .finding-list {max-height:230px;overflow-y:auto}.finding {padding:8px 10px}.finding-text {margin-top:4px}
+  .tabbar {gap:14px}.tab {font-size:13px;padding:7px 0 9px}.tab-count {padding:1px 4px}
+  .overview .muted {font-size:13px}
+}
+@media(max-width:350px){
+  .app,.mast-inner {padding-inline:10px}.tabbar {gap:8px}.tab {font-size:12px}
+  .preview-toolbar {align-items:flex-start;flex-wrap:wrap}.stat-title {font-size:11px}
+}
