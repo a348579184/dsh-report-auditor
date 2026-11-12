@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Report number auditor",
+    "description": "Check numbers in Chinese reports against a CSV source and review the evidence for each correction."
+  }
+}
