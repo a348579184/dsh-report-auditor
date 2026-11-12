@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>数字校对台</title>
+  <link rel="stylesheet" href="./workbench.css">
+</head>
+<body>
+  <header class="mast">
+    <div class="mast-inner">
+      <div class="brand"><span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i></span>数字校对台</div>
+      <button class="btn quiet" id="load-demo">载入示例</button>
+    </div>
+  </header>
+  <main class="app">
+    <div class="overview">
+      <div><div class="file-label"><span class="file-dot"></span><span id="project-label">演示周报</span></div><h1>周报数字核验</h1><p id="overview-copy" class="muted">用源数据核对报告里的数字、单位和变化幅度。</p></div>
+      <button class="btn primary" id="overview-action">导入我的材料 <span aria-hidden="true">↗</span></button>
+    </div>
+    <nav class="tabbar" aria-label="工作区">
+      <button class="tab" id="tab-results" aria-controls="pane-results" data-tab="results">核验结果</button>
+      <button class="tab" id="tab-sources" aria-controls="pane-sources" data-tab="sources">原稿与数据</button>
+      <button class="tab" id="tab-preview" aria-controls="pane-preview" data-tab="preview">修订预览<span class="tab-count" id="changes-count">0</span></button>
+    </nav>
+    <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+    <section id="pane-results" aria-labelledby="tab-results">
+      <div id="stats" class="stat-grid"></div>
+      <div id="results-view"></div>
+    </section>
+    <section id="pane-sources" aria-labelledby="tab-sources" hidden>
+      <div class="source-grid">
+        <div class="source-card">
+          <div class="card-head"><div class="card-heading"><span class="step-num">01</span><label for="report-input">报告原稿</label></div><button class="btn small" id="pick-report">导入文件</button><input type="file" id="report-file" hidden accept=".md,.markdown,.txt,text/markdown,text/plain"></div>
+          <p class="helper">粘贴报告正文，或导入 Markdown 文件。</p>
+          <textarea id="report-input" spellcheck="false" placeholder="# 本周运营周报&#10;&#10;转化率从4%升至5%，提升了1%。"></textarea>
+          <div class="source-meta"><span id="report-name"></span><span id="report-size"></span></div>
+        </div>
+        <div class="source-card">
+          <div class="card-head"><div class="card-heading"><span class="step-num">02</span><label for="csv-input">数据来源</label></div><button class="btn small" id="pick-csv">导入文件</button><input type="file" id="csv-file" hidden accept=".csv,text/csv,text/plain"></div>
+          <p class="helper">粘贴含表头的 CSV，或从文件导入。</p>
+          <textarea id="csv-input" class="code-input" spellcheck="false" placeholder="指标,上期,本期,单位&#10;转化率,4,5,%"></textarea>
+          <div class="source-meta"><span id="csv-name"></span><span id="csv-size"></span></div>
+        </div>
+      </div>
+      <details class="mapping" id="mapping"><summary>设置 CSV 列名</summary>
+        <p class="helper">如果表头不同，请填写对应列名。留空则自动识别。</p>
+        <div class="mapping-fields">
+          <label>指标名<input id="field-metric" placeholder="指标"></label><label>上期值<input id="field-previous" placeholder="上期"></label><label>本期值<input id="field-current" placeholder="本期"></label><label>单位<input id="field-unit" placeholder="单位"></label>
+        </div>
+        <button class="btn small" id="save-mapping">记住列名设置</button>
+      </details>
+      <div class="actions-end"><button class="btn primary" id="run-audit">开始核验 <span aria-hidden="true">→</span></button></div>
+    </section>
+    <section id="pane-preview" aria-labelledby="tab-preview" hidden>
+      <div class="preview-toolbar"><div><h2>修订稿</h2><p class="helper" id="preview-caption"></p></div><button class="btn primary" id="export-md">导出 Markdown <span aria-hidden="true">↓</span></button></div>
+      <div class="preview-grid">
+        <div class="preview-card"><div class="card-head"><h3>原稿</h3></div><pre id="original-preview"></pre></div>
+        <div class="preview-card revised"><div class="card-head"><h3>修订稿</h3><span class="preview-flag">预览</span></div><pre id="revised-preview"></pre></div>
+      </div>
+    </section>
+  </main>
+  <dialog id="demo-dialog" aria-labelledby="dialog-title"><form method="dialog">
+    <h2 id="dialog-title">载入示例材料？</h2><p>当前输入和本次修订会被示例替换。</p>
+    <div class="dialog-actions"><button class="btn" value="cancel" autofocus>取消</button><button class="btn primary" value="load">载入示例</button></div>
+  </form></dialog>
+  <script type="module" src="./workbench.mjs"></script>
+</body>
+</html>
